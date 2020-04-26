@@ -22,8 +22,20 @@ char* get_letter(void) {
 }
 
 int main() {
-    char* str = get_letter();
-    
+    char *str = get_letter();
+    char * pch;
+    pch = strtok (str,"\\n\\t\\r\\n\"' ,.");
+    printf("%s", pch);
+    int count = 0;
+    while (pch != NULL)
+    {
+        printf ("%s\n",pch);
+        if (strcmp(pch, "love")) {
+            count++;
+        }
+        pch = strtok (NULL, "\\n\\t\\r\\n\"' ,.");
+    }
+    printf("%d", count);
 
     puts(str); //应该是内置函数。以前学习完全没入门。
     return 0;
