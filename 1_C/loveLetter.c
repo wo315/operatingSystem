@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 const int MAX_LENGTH = 256;
 
@@ -23,20 +24,22 @@ char* get_letter(void) {
 
 int main() {
     char *str = get_letter();
-    char * pch;
-    pch = strtok (str,"\\n\\t\\r\\n\"' ,.");
-    printf("%s", pch);
+    char *str1 = (char*) malloc(strlen(str) + 1);
+    strcpy(str1, str);
+    char *pch;
+    pch = strtok (str, "\r\n\"\t\n' ,.");
+
     int count = 0;
     while (pch != NULL)
     {
         printf ("%s\n",pch);
-        if (strcmp(pch, "love")) {
+        if (!strcmp(pch, "love")) {
             count++;
         }
-        pch = strtok (NULL, "\\n\\t\\r\\n\"' ,.");
+        pch = strtok (NULL, "\r\n\"\t\n' ,.");
     }
-    printf("%d", count);
-
+    printf("%d\n", count);
+    strcpy(str, str1);
     puts(str); //应该是内置函数。以前学习完全没入门。
     return 0;
 }
