@@ -19,3 +19,5 @@ int main() {
     free(mood);
     return 0;
 }
+
+// void* realloc(void* ptr, size_t size);
